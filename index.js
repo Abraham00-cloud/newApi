@@ -11,7 +11,7 @@ app.get('/ejs', (req, res) => {
 })
 
 const people = [
-    {name : 'Abraham', school: 'sqi', image: ''},
+    {name : 'Abraham', school: 'sqi', image: 'https://new-api-drab.vercel.app/images/ab.jpg'},
     {name : 'Mercy', school: 'sqi', image: ''},
     {name : 'Abraham', school: 'sqi', image: ''}
 ]
@@ -24,6 +24,14 @@ app.get('/html', (req, res) => {
 
 app.get('/', (req, res) => {
     res.send('hello, this is going to work in the name of jesus')
+})
+
+app.get('/api', (req, res) => {
+    try {
+        res.status(200).json({message: people})
+    } catch (error) {
+        res.status(501).json({message: error})
+    }
 })
 
 app.listen(port, () => {
